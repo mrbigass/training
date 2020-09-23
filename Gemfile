@@ -20,6 +20,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # added
 gem 'devise'
 gem 'ridgepole'
+gem 'slim-rails'
 
 group :development, :test do
   gem 'pry-byebug'
