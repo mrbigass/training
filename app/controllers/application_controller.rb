@@ -2,7 +2,5 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
 
-  def home
-    render layout: false
-  end
+  def home; end
 end
