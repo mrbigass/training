@@ -9,18 +9,25 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     header
-      nav
-        - if user_signed_in?
-          strong
-            = link_to current_user.user_name, pages_show_path
-          = link_to 'edit profile', edit_user_registration_path
-          = link_to 'logout', destroy_user_session_path, method: :delete
-        - else
-          = link_to 'signup', new_user_registration_path
-          = link_to 'login', new_user_session_path
+      nav.navbar.navbar-expand.navbar-light.bg-white.topbar.static-top.shadow
+        ul.navbar-nav.ml-auto
+          - if user_signed_in?
+            li.nav-item.dropdown.no-arrow
+              strong
+                / = link_to current_user.user_name, pages_show_path
+              = link_to 'edit profile', edit_user_registration_path, class: 'nav-link'
+            li.nav-item.dropdown.no-arrow
+              = link_to 'logout', destroy_user_session_path, method: :delete, class: 'nav-link'
+          - else
+            li.nav-item.dropdown.no-arrow
+              = link_to 'signup', new_user_registration_path, class: 'nav-link'
+            li.nav-item.dropdown.no-arrow
+              = link_to 'login', new_user_session_path, class: 'nav-link'
 
-    p.notice
-      = notice
-    p.alert
-      = alert
+    - if notice
+      p.notice
+        = notice
+    - if alert
+      p.alert
+        = alert
     = yield
