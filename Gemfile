@@ -26,7 +26,9 @@ gem 'html2slim'
 group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
   gem 'shoulda-matchers'
+  gem 'rubocop'
 end
 
 group :development do

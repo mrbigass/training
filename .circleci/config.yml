@@ -1,28 +1,75 @@
 version: 2.1
-orbs:
-  ruby: circleci/ruby@0.1.2
+
+executors:
+  default_executor:
+    docker:
+      - image: circleci/ruby:2.7.1-node-browsers-legacy
+        environment:
+          RAILS_ENV: test
+          BUNDLE_PATH: vendor/bundle
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: 'root'
+          DB_PASSWORD: ''
+      - image: circleci/mysql:5.7
+
 jobs:
   build:
-    docker:
-      - image: circleci/ruby:2.7.1-node-browsers-legacy
-        environment:
-          RAILS_ENV: test
-    executor: ruby/default
-    working_directory: ~/project
+    executor: default_executor
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-bundle-cache-{{ checksum "Gemfile.lock" }}
       - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
-  run_rspec:
-    docker:
-      - image: circleci/ruby:2.7.1-node-browsers-legacy
-        environment:
-          RAILS_ENV: test
-      - image: circleci/mysql:5.7.20
-    executor: ruby/default
-    working_directory: ~/project
+          name: Bundle Install
+          command: bundle check || bundle install
+      - run: bundle clean
+      - save_cache:
+          key:
+            v1-bundle-cache-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      # https://circleci.com/docs/ja/2.0/configuration-reference/#persist_to_workspace
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - ./
+
+  run_rubocop:
+    executor: default_executor
     steps:
-      - ruby/rspec-test
-      - run: bundle exec rspec
+      - attach_workspace:
+          at: ~/project
+      - run: mkdir /tmp/test-results
+      - run: cd ~/project
+      - run: bundle exec rubocop --format junit --out /tmp/test-results/rubocop.xml
+      - store_test_results:
+          path: /tmp/test-results
+
+  run_rspec:
+    executor: default_executor
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run: mkdir /tmp/test-results
+      - run: cd ~/project
+      - run: dockerize -wait tcp://localhost:3306 -timeout 1m
+      - run: bundle exec rake db:create
+      - run: bundle exec ridgepole -c config/database.yml -f Schemafile --apply --env test
+      - run: bundle exec rspec --format RspecJunitFormatter --out /tmp/test-results/rspec.xml
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+
+workflows:
+  version: 2
+  build_test:
+    jobs:
+      - build
+      - run_rubocop:
+          requires:
+            - build
+      # - run_rspec:
+      #     requires:
+      #       - build
