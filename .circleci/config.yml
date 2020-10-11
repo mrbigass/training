@@ -7,6 +7,9 @@ executors:
         environment:
           RAILS_ENV: test
           BUNDLE_PATH: vendor/bundle
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: 'root'
+          DB_PASSWORD: ''
       - image: circleci/mysql:5.7
 
 jobs:
@@ -50,13 +53,14 @@ jobs:
           at: ~/project
       - run: mkdir /tmp/test-results
       - run: cd ~/project
-      - run: ./bin/rake db:create
+      - run: dockerize -wait tcp://localhost:3306 -timeout 1m
+      - run: bundle exec rake db:create
       - run: bundle exec ridgepole -c config/database.yml -f Schemafile --apply --env test
-      - run: bundle exec rspec --out /tmp/test-results/rspec.xml
-      # - store_test_results:
-      #     path: /tmp/test-results
-      # - store_artifacts:
-      #     path: /tmp/test-results
+      - run: bundle exec rspec --format RspecJunitFormatter --out /tmp/test-results/rspec.xml
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
 
 workflows:
   version: 2
