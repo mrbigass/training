@@ -45,8 +45,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name]-[hash].css'
     }),
-    new ManifestPlugin(
-      {publicPath: '/packs/'}
-    )
+    new ManifestPlugin({
+      publicPath: '/packs/',
+      writeToFileEmit: true
+    })
   ],
 }
