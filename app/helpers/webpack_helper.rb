@@ -35,17 +35,9 @@ module WebpackHelper
 
   private
 
-  # def webpack_asset_path(path)
-  #   # webpack-dev-server を参照
-  #   return "http://localhost:8080/#{path}" if Rails.env.development?
-
-  #   host = Rails.application.config.action_controller.asset_host
-  #   manifest = Rails.application.config.assets.webpack_manifest
-  #   path = manifest[path] if manifest && manifest[path].present?
-  #   "#{host}/assets/#{path}"
-  # end
+  MANIFEST_PATH = 'public/packs/manifest.json'
 
   def sources_from_manifest_entries(names, type:)
-    names.map { |name| Webpack.manifest.lookup!(name, type: type) }.flatten
+    names.map { |name| WebpackManifest.new(MANIFEST_PATH).lookup!(name, type: type) }.flatten
   end
 end

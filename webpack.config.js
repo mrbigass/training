@@ -8,8 +8,8 @@ module.exports = {
     application: './app/javascript/packs/application.js' // path.resolve(__dirname, './app/javascript/packs/application.js')
   },
   output: {
-    path: path.resolve(__dirname, './public/assets'),
-    filename: 'javascripts/[name]-[hash].js',
+    path: path.resolve(__dirname, './public/packs'),
+    filename: '[name]-[hash].js',
   },
   module: {
     rules: [
@@ -21,12 +21,7 @@ module.exports = {
         test: /\.(css|sass)$/,
         exclude: /node_modules/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: path.resolve(__dirname, 'public/packs/stylesheets')
-            }
-          },
+          MiniCssExtractPlugin.loader,
           // 'vue-style-loader',
           'css-loader',
           'sass-loader'
@@ -48,8 +43,10 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'stylesheets/[name]-[hash].css'
+      filename: '[name]-[hash].css'
     }),
-    new ManifestPlugin()
+    new ManifestPlugin(
+      {publicPath: '/packs/'}
+    )
   ],
 }

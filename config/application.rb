@@ -25,6 +25,7 @@ module Training
 
     config.i18n.fallbacks = [I18n.default_locale]
     I18n.locale = :en
+    config.autoload_paths += %W[#{config.root}/lib/webpack_manifest]
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
