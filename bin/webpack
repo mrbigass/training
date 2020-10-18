@@ -3,16 +3,9 @@
 ENV['RAILS_ENV'] ||= ENV['RACK_ENV'] || 'development'
 ENV['NODE_ENV']  ||= 'development'
 
-require 'pathname'
-ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile',
-  Pathname.new(__FILE__).realpath)
-
-require 'bundler/setup'
-
-require 'webpacker'
-require 'webpacker/webpack_runner'
-
-APP_ROOT = File.expand_path('..', __dir__)
-Dir.chdir(APP_ROOT) do
-  Webpacker::WebpackRunner.run(ARGV)
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
 end
+
+puts "\n== package install and start =="
+system! 'yarn && yarn run webpack-dev-server'
