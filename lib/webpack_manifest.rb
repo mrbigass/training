@@ -18,20 +18,6 @@ class WebpackManifest
     @data = load
   end
 
-  def lookup_pack_with_chunks(name, pack_type = {})
-    compile if compiling?
-
-    manifest_pack_type = manifest_type(pack_type[:type])
-    manifest_pack_name = manifest_name(name, manifest_pack_type)
-    find('entrypoints')[manifest_pack_name][manifest_pack_type]
-  rescue NoMethodError
-    nil
-  end
-
-  def lookup_pack_with_chunks!(name, pack_type = {})
-    lookup_pack_with_chunks(name, pack_type) || handle_missing_entry(name, pack_type)
-  end
-
   # Computes the relative path for a given Webpacker asset using manifest.json.
   # If no asset is found, returns nil.
   #
@@ -39,8 +25,6 @@ class WebpackManifest
   #
   #   Webpacker.manifest.lookup('calendar.js') # => "/packs/calendar-1016838bab065ae1e122.js"
   def lookup(name, pack_type = {})
-    compile if compiling?
-
     find(full_pack_name(name, pack_type[:type]))
   end
 
@@ -51,16 +35,8 @@ class WebpackManifest
 
   private
 
-  def compiling?
-    config.compile? && !dev_server.running?
-  end
-
-  def compile
-    Webpack.logger.tagged('Webpack') { compiler.compile }
-  end
-
   def data
-    if config.cache_manifest?
+    if true # if config.cache_manifest?
       @data ||= load
     else
       refresh

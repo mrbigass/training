@@ -8,7 +8,7 @@ module.exports = {
     application: './app/javascript/packs/application.js' // path.resolve(__dirname, './app/javascript/packs/application.js')
   },
   output: {
-    path: path.resolve(__dirname, './public/packs'),
+    path: path.resolve(__dirname, './public/packs'), // manifest の出る位置
     filename: '[name]-[hash].js',
   },
   module: {
@@ -46,7 +46,7 @@ module.exports = {
       filename: '[name]-[hash].css'
     }),
     new ManifestPlugin({
-      publicPath: '/packs/',
+      publicPath: '/packs/',　// manifest 内でのpathの表記が変わる
       writeToFileEmit: true
     })
   ],

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'webpack_manifest'
+
 module WebpackHelper
   # Creates a script tag that references the named pack file, as compiled by webpack per the entries list
   # in package/environments/base.js. By default, this list is auto-generated to match everything in
