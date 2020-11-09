@@ -1,1 +1,36 @@
-h1 test
+h1 home
+
+h3 office list
+table
+  thead
+    tr
+      th id
+      th name
+  tbody
+    - @offices.each do |office|
+      tr
+        td
+          = office.id
+        td
+          = office.name
+= link_to 'register new office', new_office_path
+
+
+h3 machine list
+table
+  thead
+    tr
+      th id
+      th name
+      th office
+  tbody
+    - @machines.each do |machine|
+      tr
+        td
+          = machine.id
+        td
+          = machine.name
+        td
+          = machine.office.name
+
+= link_to 'register new machine', new_machine_path
