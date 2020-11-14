@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+system 'bundle exec ridgepole -c config/database.yml -f Schemafile --apply'
+system 'bundle exec ridgepole -c config/database.yml -f Schemafile --apply --env test'
