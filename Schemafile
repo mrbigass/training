@@ -49,6 +49,10 @@ create_table :offices, :options=>'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
   t.string :name, null: false
 end
 
+create_table :customers, :options=>'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
+  t.string :name, null: false
+end
+
 create_table :lendings, :options=>'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
   t.integer :machine_id, null: false
   t.integer :customer_id, null: false
