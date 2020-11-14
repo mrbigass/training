@@ -11,5 +11,6 @@ class ApplicationController < ActionController::Base
   def home
     @offices = Office.all
     @machines = Machine.all
+    @customers = Customer.all
   end
 end

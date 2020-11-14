@@ -41,6 +41,25 @@
                   = machine.name
                 td
                   = machine.office.name
+  .col-lg-6
+    .card.shadow.mb-4
+      .d-block.card-header.py-3
+        h6.m-0.font-weight-bold.text-primary
+        | customer list
+      .collapse.show
+        table.table
+          thead
+            tr
+              th id
+              th name
+          tbody
+            - @customers.each do |customer|
+              tr
+                td
+                  = customer.id
+                td
+                  = customer.name
+
   = link_to 'register new office', new_office_path, class: 'btn btn-primary'
 
   = link_to 'register new machine', new_machine_path, class: 'btn btn-primary'
