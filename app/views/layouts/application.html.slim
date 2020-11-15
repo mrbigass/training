@@ -26,9 +26,11 @@ html
                 li.nav-item
                   a.nav-link dash board
                 li.nav-item
-                  a.nav-link offices
+                  = link_to 'office', new_office_path, class: 'nav-link'
                 li.nav-item
-                  a.nav-link machines
+                  = link_to 'machine', new_machine_path, class: 'nav-link'
+                li.nav-item
+                  = link_to 'customer', new_customer_path, class: 'nav-link'
           main.col-md-9.ml-sm-auto.col-lg-10.px-4 role='main'
             - if notice
               p.notice
@@ -36,6 +38,7 @@ html
             - if alert
               p.alert
                 = alert
-            = yield
+            .container-fluid.mt-4
+              = yield
     - else
       = yield
