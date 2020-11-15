@@ -8,26 +8,37 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    header
-      nav.navbar.navbar-expand.navbar-light.bg-white.topbar.static-top.shadow
-        ul.navbar-nav.ml-auto
-          - if user_signed_in?
-            li.nav-item.dropdown.no-arrow
-              strong
-                / = link_to current_user.user_name, pages_show_path
-              = link_to 'edit profile', edit_user_registration_path, class: 'nav-link'
-            li.nav-item.dropdown.no-arrow
-              = link_to 'logout', destroy_user_session_path, method: :delete, class: 'nav-link'
-          - else
-            li.nav-item.dropdown.no-arrow
-              = link_to 'signup', new_user_registration_path, class: 'nav-link'
-            li.nav-item.dropdown.no-arrow
-              = link_to 'login', new_user_session_path, class: 'nav-link'
-
-    - if notice
-      p.notice
-        = notice
-    - if alert
-      p.alert
-        = alert
-    = yield
+    - if user_signed_in?
+      header
+        nav.navbar.navbar-dark.fixed-top.bg-dark.flex-md-nowrap.p-0.shadow
+          a.navbar-brand.col-sm-3.col-md-2.mr-0 Training
+          input.form-control.form-control-dark.w-100 placeholder="検索"
+          ul.navbar-nav.navbar-expand-md.px-3
+            li.nav-item.text-nowrap
+              = link_to 'Edit profile', edit_user_registration_path, method: :delete, class: 'nav-link'
+            li.nav-item.text-nowrap
+              = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link'
+      .container-fluid
+        .row
+          nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+            .sidebar-sticky
+              ul.nav.flex-column
+                li.nav-item
+                  a.nav-link dash board
+                li.nav-item
+                  = link_to 'office', new_office_path, class: 'nav-link'
+                li.nav-item
+                  = link_to 'machine', new_machine_path, class: 'nav-link'
+                li.nav-item
+                  = link_to 'customer', new_customer_path, class: 'nav-link'
+          main.col-md-9.ml-sm-auto.col-lg-10.px-4 role='main'
+            - if notice
+              p.notice
+                = notice
+            - if alert
+              p.alert
+                = alert
+            .container-fluid.mt-4
+              = yield
+    - else
+      = yield
