@@ -36,11 +36,12 @@ class WebpackManifest
   private
 
   def data
-    if true # if config.cache_manifest?
-      @data ||= load
-    else
-      refresh
-    end
+    @data ||= load
+    # if config.cache_manifest?
+    #   @data ||= load
+    # else
+    #   refresh
+    # end
   end
 
   def find(name)
