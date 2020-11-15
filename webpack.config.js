@@ -1,0 +1,47 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ManifestPlugin = require('webpack-manifest-plugin');
+const path = require('path');
+
+module.exports = {
+  entry: {
+    application: './app/javascript/packs/application.js' // path.resolve(__dirname, './app/javascript/packs/application.js')
+  },
+  output: {
+    path: path.resolve(__dirname, './public/packs'), // manifest の出る位置
+    filename: '[name]-[hash].js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(css|sass)$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          // 'vue-style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.(jpg|png|gif)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            outputPath: 'images',
+            publicPath: 'assets/images',
+            name: '[name].[ext]'
+          }
+        }]
+      }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name]-[hash].css'
+    }),
+    new ManifestPlugin({
+      publicPath: '/packs/',　// manifest 内でのpathの表記が変わる
+      writeToFileEmit: true
+    })
+  ],
+}
