@@ -7,7 +7,6 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 // require("channels")
-//require("src/sb-admin-2")
 require("src/bootstrap/bootstrap")
 require("src/dashboard.css")
 // Uncomment to copy all static images under ../images to the output folder and reference
