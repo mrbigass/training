@@ -25,29 +25,32 @@ html
               = link_to 'login', new_user_session_path, class: 'nav-link'
 
   body
-    nav.navbar.navbar-dark.fixed-top.bg-dark.flex-md-nowrap.p-0.shadow
-      a.navbar-brand.col-sm-3.col-md-2.mr-0 Training
-      input.form-control.form-control-dark.w-100 placeholder="検索"
-      ul.navbar-nav.px-3
-        li.nav-item.text-nowrap
-          = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link'
-    .container-fluid
-      .row
-        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
-          .sidebar-sticky
-            ul.nav.flex-column
-              li.nav-item
-                a.nav-link dash board
-              li.nav-item
-                a.nav-link offices
-              li.nav-item
-                a.nav-link machines
+    - if user_signed_in?
+      nav.navbar.navbar-dark.fixed-top.bg-dark.flex-md-nowrap.p-0.shadow
+        a.navbar-brand.col-sm-3.col-md-2.mr-0 Training
+        input.form-control.form-control-dark.w-100 placeholder="検索"
+        ul.navbar-nav.px-3
+          li.nav-item.text-nowrap
+            = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link'
+      .container-fluid
+        .row
+          nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+            .sidebar-sticky
+              ul.nav.flex-column
+                li.nav-item
+                  a.nav-link dash board
+                li.nav-item
+                  a.nav-link offices
+                li.nav-item
+                  a.nav-link machines
 
-        main.col-md-9.ml-sm-auto.col-lg-10.px-4 role='main'
-          - if notice
-            p.notice
-              = notice
-          - if alert
-            p.alert
-              = alert
-          = yield
+          main.col-md-9.ml-sm-auto.col-lg-10.px-4 role='main'
+            - if notice
+              p.notice
+                = notice
+            - if alert
+              p.alert
+                = alert
+            = yield
+    - else
+      = yield
