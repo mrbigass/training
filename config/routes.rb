@@ -5,5 +5,9 @@ Rails.application.routes.draw do
 
   root to: 'application#home'
 
-  resources :posts, only: %i[index new create show]
+  resources :users,     only: %i[index new create]
+  resources :machines,  only: %i[new create]
+  resources :offices,   only: %i[new create]
+  resources :customers, only: %i[new create]
+  resources :lendings,  only: %i[new create]
 end

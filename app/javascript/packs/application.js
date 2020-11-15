@@ -1,1 +1,3 @@
-import "../styles/sb-admin-2.sass"
+require("src/bootstrap/bootstrap")
+require("src/dashboard.css")
+require("src/signin.css")

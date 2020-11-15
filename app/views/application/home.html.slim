@@ -1,1 +1,61 @@
-h1 test
+  h1 home
+  .col-lg-6
+    .card.shadow.mb-4
+      .d-block.card-header.py-3
+        h6.m-0.font-weight-bold.text-primary
+        | office list
+      .collapse.show
+        table.table
+          thead
+            tr
+              th id
+              th name
+          tbody
+            - @offices.each do |office|
+              tr
+                td
+                  = office.id
+                td
+                  = office.name
+
+  .col-lg-6
+    .card.shadow.mb-4
+      .d-block.card-header.py-3
+        h6.m-0.font-weight-bold.text-primary
+        | machine list
+      .collapse.show
+        table.table
+          thead
+            tr
+              th id
+              th name
+              th office
+          tbody
+            - @machines.each do |machine|
+              tr
+                td
+                  = machine.id
+                td
+                  = machine.name
+                td
+                  = machine.office.name
+  .col-lg-6
+    .card.shadow.mb-4
+      .d-block.card-header.py-3
+        h6.m-0.font-weight-bold.text-primary
+        | customer list
+      .collapse.show
+        table.table
+          thead
+            tr
+              th id
+              th name
+          tbody
+            - @customers.each do |customer|
+              tr
+                td
+                  = customer.id
+                td
+                  = customer.name
+
+  = link_to 'lending', new_lending_path, class: 'btn btn-primary'
