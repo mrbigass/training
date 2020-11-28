@@ -8,8 +8,11 @@ module.exports = {
     application: './app/javascript/packs/application.js' // path.resolve(__dirname, './app/javascript/packs/application.js')
   },
   output: {
-    path: path.resolve(__dirname, './public/packs'), // manifest の出る位置
+    path: path.resolve(__dirname, 'public/packs'), // manifest の出る位置
     filename: '[name]-[hash].js',
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, 'public/packs')
   },
   module: {
     rules: [
