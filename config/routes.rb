@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users
+  resources :user_sessions, only: %i[new create delete]
+  resources :user_registrations, only: %i[new create]
 
   root to: 'application#home'
 
