@@ -2,6 +2,7 @@
   "name": "training",
   "private": true,
   "dependencies": {
+    "bootstrap": "4.6.0",
     "css-loader": "^5.0.0",
     "file-loader": "^6.1.1",
     "mini-css-extract-plugin": "^1.0.0",

@@ -22,7 +22,7 @@ module.exports = {
       },
       {
         test: /\.(css|sass)$/,
-        exclude: /node_modules/,
+        // exclude: /node_modules/, // 一時的にnpmのbootstrapを利用するためnode_modulesからインポートしている
         use: [
           MiniCssExtractPlugin.loader,
           // 'vue-style-loader',
