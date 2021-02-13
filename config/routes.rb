@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :user_sessions, only: %i[new create delete]
-  resources :user_registrations, only: %i[new create]
-
   root to: 'application#home'
+  get 'login', to: 'application#login'
+  post 'login_confirmation', to: 'application#login_confirmation'
 
   resources :users,     only: %i[index new create]
   resources :machines,  only: %i[new create]
