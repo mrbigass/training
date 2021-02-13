@@ -12,7 +12,7 @@ module.exports = {
     filename: '[name]-[hash].js',
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'public/packs')
+    contentBase: path.join(__dirname, 'public/packs'),
   },
   module: {
     rules: [

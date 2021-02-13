@@ -1,0 +1,11 @@
+ruby:
+  form_option = {
+    url: login_confirmation_path,
+    method: 'post',
+  }
+
+= form_with(**form_option) do |form|
+  = form.text_field :name
+  = form.text_field :email
+  = form.text_field :password
+  = form.submit
