@@ -9,8 +9,17 @@ class ApplicationController < ActionController::Base
     @customers = Customer.all
   end
 
-  def registration
-    user = User.new(name: params[:name], email: params[:email], password: params[:password])
+  def registration; end
+
+  def registration_post
+    user = User.new(
+      office: Office.first,
+      name: params[:name],
+      email: params[:email],
+      password: params[:password],
+      password_confirmation: params[:password_confirmation]
+    )
+
     user.save!
   end
 

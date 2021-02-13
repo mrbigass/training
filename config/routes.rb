@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: 'application#home'
   get 'login', to: 'application#login'
   post 'login_confirmation', to: 'application#login_confirmation'
+  get 'registration', to: 'application#registration'
+  post 'registration_post', to: 'application#registration_post'
 
   resources :users,     only: %i[index new create]
   resources :machines,  only: %i[new create]
