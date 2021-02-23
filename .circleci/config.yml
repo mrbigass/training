@@ -3,7 +3,7 @@ version: 2.1
 executors:
   default_executor:
     docker:
-      - image: circleci/ruby:2.7.1-node
+      - image: circleci/ruby:2.7.2-node
         environment:
           RAILS_ENV: test
           BUNDLE_PATH: vendor/bundle
