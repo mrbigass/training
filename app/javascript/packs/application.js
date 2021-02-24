@@ -1,4 +1,4 @@
-import "../src/dashboard.css"
-import "../src/signin.css"
+import "../src/dashboard.sass"
+import "../src/signin.sass"
 
 import "bootstrap/dist/css/bootstrap.min.css"
