@@ -5,7 +5,7 @@ ruby '2.7.2'
 
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'mysql2', '>= 0.4.4'
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 5.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
