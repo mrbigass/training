@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
-gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
+gem 'rails', '~> 6.0.3'
 gem 'mysql2', '>= 0.4.4'
 gem 'puma', '~> 4.1'
 # Use Redis adapter to run Action Cable in production
