@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :check_authenticate, only: %i[home]
+  include UserAuthentications
+  before_action :check_authentication, only: %i[home]
 
   def home
     @offices = Office.all
@@ -26,25 +27,12 @@ class ApplicationController < ActionController::Base
   def login; end
 
   def login_confirmation
-    user = User.find_by(email: params[:email])
-    return unless user&.authenticate(params[:password])
-
-    session[:user_id] = user.id
+    authenticate(email: params[:email], password: params[:password])
     redirect_to root_path
   end
 
-  private
-
-  def check_authenticate
-    if User.find_by(id: session[:user_id])
-      true
-    else
-      redirect_to login_path
-    end
-  end
-
   def current_user
-    @current_user ||= User.find(session[:user_id])
+    @current_user ||= check_authenticate
   end
 
   def current_office
