@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :office, class: Office do
-    name { 'test office' }
+    name { Faker::Company.name }
   end
 end
