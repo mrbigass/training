@@ -1,7 +1,12 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-create_table :users, :options=>'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
+def create_table(table_name)
+  opts = 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci'
+  super table_name, options: opts
+end
+
+create_table :users do |t|
   t.integer :office_id, null: false
   t.string :name, null: false, default: ''
   t.string :email, null: false, default: ''
@@ -10,20 +15,20 @@ create_table :users, :options=>'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
   t.timestamps null: false
 end
 
-create_table :machines, :options=>'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
+create_table :machines do |t|
   t.string :name, null: false
   t.integer :office_id, null: false
 end
 
-create_table :offices, :options=>'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
+create_table :offices do |t|
   t.string :name, null: false
 end
 
-create_table :customers, :options=>'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
+create_table :customers do |t|
   t.string :name, null: false
 end
 
-create_table :lendings, :options=>'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4' do |t|
+create_table :lendings do |t|
   t.integer :machine_id, null: false
   t.integer :customer_id, null: false
   t.datetime :lend_at, null: false
