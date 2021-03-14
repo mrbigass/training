@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   def login; end
 
-  def login_confirmation
+  def login_authenticate
     authenticate(email: params[:email], password: params[:password])
     redirect_to root_path
   end
