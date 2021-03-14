@@ -70,6 +70,6 @@ workflows:
       - run_rubocop:
           requires:
             - build
-      # - run_rspec:
-      #     requires:
-      #       - build
+      - run_rspec:
+          requires:
+            - build
