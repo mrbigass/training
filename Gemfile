@@ -5,7 +5,7 @@ ruby '2.7.2'
 
 gem 'rails', '~> 6.0'
 gem 'mysql2', '>= 0.4.4'
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 5.2'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootsnap', '>= 1.4.2', require: false
