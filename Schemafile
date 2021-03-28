@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 def create_table(table_name)
-  opts = 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci'
+  opts = 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4'
   super table_name, options: opts
 end
 
