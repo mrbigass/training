@@ -161,8 +161,8 @@ GEM
       ffi (~> 1.0)
     regexp_parser (2.1.1)
     rexml (3.2.4)
-    ridgepole (0.8.10)
-      activerecord (>= 5.0.1, < 6.1)
+    ridgepole (0.9.1)
+      activerecord (>= 5.1, < 6.2)
       diffy
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
