@@ -22,11 +22,12 @@ end
 #
 # Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
-# Checks for pending migrations and applies them before tests are run.
+# テスト前にDBを初期化する
 begin
-  ActiveRecord::Migration.maintain_test_schema!
-rescue ActiveRecord::PendingMigrationError => e
-  puts e.to_s.strip
+  system 'bundle exec ridgepole -c config/database.yml --env test --apply'
+rescue RuntimeError => e
+  puts 'failed in migration'
+  puts e.full_message
   exit 1
 end
 RSpec.configure do |config|
