@@ -54,8 +54,7 @@ jobs:
       - run: mkdir /tmp/test-results
       - run: cd ~/project
       - run: dockerize -wait tcp://localhost:3306 -timeout 1m
-      - run: bundle exec rake db:create
-      - run: bundle exec ridgepole -c config/database.yml -f Schemafile --apply --env test
+      - run: bundle exec rails db:create
       - run: bundle exec rspec --format RspecJunitFormatter --out /tmp/test-results/rspec.xml
       - store_test_results:
           path: /tmp/test-results
@@ -70,6 +69,6 @@ workflows:
       - run_rubocop:
           requires:
             - build
-      # - run_rspec:
-      #     requires:
-      #       - build
+      - run_rspec:
+          requires:
+            - build

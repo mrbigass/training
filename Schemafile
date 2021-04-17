@@ -2,12 +2,12 @@
 # vi: set ft=ruby :
 
 def create_table(table_name)
-  opts = 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci'
+  opts = 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4'
   super table_name, options: opts
 end
 
 create_table :users do |t|
-  t.integer :office_id, null: false
+  t.references :office, index: true, null: false
   t.string :name, null: false, default: ''
   t.string :email, null: false, default: ''
   t.string :password_digest, null: false, default: ''
@@ -34,3 +34,5 @@ create_table :lendings do |t|
   t.datetime :lend_at, null: false
   t.datetime :return_at, null: false
 end
+
+add_foreign_key :users, :offices, on_delete: :cascade
