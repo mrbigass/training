@@ -1,4 +1,4 @@
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+// const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin');
 const path = require('path');
@@ -16,10 +16,10 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
+      // {
+      //   test: /\.vue$/,
+      //   loader: 'vue-loader'
+      // },
       {
         test: /\.(css|sass)$/,
         // exclude: /node_modules/, // 一時的にnpmのbootstrapを利用するためnode_modulesからインポートしている
@@ -44,7 +44,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new VueLoaderPlugin(),
+    // new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name]-[hash].css'
     }),
