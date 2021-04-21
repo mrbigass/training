@@ -22,7 +22,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec_junit_formatter'
   gem 'shoulda-matchers'
-  gem 'rubocop'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
 end
 
 group :development do
@@ -30,12 +31,6 @@ group :development do
   gem 'listen', '~> 3.4'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-end
-
-group :test do
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
 end
 
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
