@@ -42,7 +42,7 @@ jobs:
           at: ~/project
       - run: mkdir /tmp/test-results
       - run: cd ~/project
-      - run: bundle exec rubocop --format junit --out /tmp/test-results/rubocop.xml
+      - run: bundle exec rubocop --parallel --format junit --out /tmp/test-results/rubocop.xml
       - store_test_results:
           path: /tmp/test-results
 

@@ -7,6 +7,3 @@ $ bin/setup
 $ bin/rails s
 $ bin/webpack
 ```
-## ToDo
-- Form object作ってみる
-- container
