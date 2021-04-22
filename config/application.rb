@@ -21,7 +21,7 @@ module Training
     config.load_defaults 6.0
 
     config.i18n.fallbacks = [I18n.default_locale]
-    I18n.locale = :en
+    I18n.locale = :ja
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
