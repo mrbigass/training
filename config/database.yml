@@ -8,8 +8,8 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: <%= ENV.fetch('DB_HOST', 'localhost') %>
   port: <%= ENV.fetch('DB_PORT', '3306') %>
-  username: <%= ENV.fetch("DB_USERNAME") { 'training' } %>
-  password: <%= ENV.fetch("DB_PASSWORD") { 'root_password' } %>
+  username: <%= ENV.fetch("DB_USERNAME") { 'root' } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { 'password' } %>
   socket: /tmp/mysql.sock
 
 development:
