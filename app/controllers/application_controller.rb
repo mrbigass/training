@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= check_authenticate
+    @current_user ||= check_authentication
   end
 
   def current_office
