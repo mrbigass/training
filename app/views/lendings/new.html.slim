@@ -1,12 +1,12 @@
 h1 lending#new
 
-/= form_with(model: RentalReservationForm.new, path: lendings_path) do |form|
+= form_with(url: lendings_path, method: :post) do |form|
   = form.label 'customer_id'
   = form.text_field :customer_id
   = form.label 'machine_id'
   = form.text_field :machine_id
   = form.label 'lend from'
-  = form.date_select :lend_from
+  = form.date_field :lend_from
   = form.label 'return at'
-  = form.date_select :return_at
+  = form.date_field :return_at
   = form.submit

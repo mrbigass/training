@@ -7,7 +7,7 @@ def create_table(table_name)
 end
 
 create_table :users do |t|
-  t.references :office, index: true, null: false
+  t.references :office, null: false
   t.string :name, null: false, default: ''
   t.string :email, null: false, default: ''
   t.string :password_digest, null: false, default: ''
@@ -29,10 +29,14 @@ create_table :customers do |t|
 end
 
 create_table :lendings do |t|
-  t.integer :machine_id, null: false
-  t.integer :customer_id, null: false
-  t.datetime :lend_at, null: false
-  t.datetime :return_at, null: false
+  t.references :machine, null: false
+  t.references :customer, null: false
+  t.references :office, null: false
+  t.datetime :from, null: false
+  t.datetime :to, null: false
 end
 
+add_foreign_key :lendings, :customers
+add_foreign_key :lendings, :machines
+add_foreign_key :lendings, :offices
 add_foreign_key :users, :offices, on_delete: :cascade
