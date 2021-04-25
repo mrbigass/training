@@ -11,7 +11,7 @@ html
     - if session[:user_id]
       header
         nav.navbar.navbar-dark.fixed-top.bg-dark.flex-md-nowrap.p-0.shadow
-          a.navbar-brand.col-sm-3.col-md-2.mr-0 Training
+          = link_to 'Training', root_path, class: 'navbar-brand col-sm-3 col-md-2 mr-0'
           input.form-control.form-control-dark.w-100 placeholder="検索"
           ul.navbar-nav.navbar-expand-md.px-3
             li.nav-item.text-nowrap
