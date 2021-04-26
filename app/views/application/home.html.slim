@@ -59,3 +59,32 @@
                   = customer.name
 
   = link_to 'lending', new_lending_path, class: 'btn btn-primary'
+
+  .col-lg-12
+    .card.shadow.mb-4
+      .d-block.card-header.py-3
+        h6.m-0.font-weight-bold.text-primary
+        | lending list
+      .collapse.show
+        table.table
+          thead
+            tr
+              th id
+              th customer
+              th machine
+              th from
+              th to
+
+          tbody
+            - @lendings.each do |lending|
+              tr
+                td
+                  = lending.id
+                td
+                  = lending.customer.name
+                td
+                  = lending.machine.name
+                td
+                  = lending.from
+                td
+                  = lending.to
