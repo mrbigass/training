@@ -4,14 +4,19 @@ class LendingsController < ApplicationController
   def new; end
 
   def create
-    lending = Lending.new(
-      office: Office.first,
-      customer: Customer.first,
-      machine: Machine.first,
-      from: '2021-04-25 04:17:49 UTC',
-      to: '2021-04-26 04:17:49 UTC'
-    )
+    rental_reservation_form = RentalReservationForm.new(lending_params)
 
-    redirect_to root_path if lending.save
+    redirect_to root_path if rental_reservation_form.save
+  end
+
+  def lending_params
+    params.require(:rental_reservation_form).permit(
+      :customer_id,
+      :machine_id,
+      :from,
+      :to
+    ).merge(
+      office: current_user.office
+    )
   end
 end
