@@ -15,4 +15,16 @@ RSpec.describe LendingsController, type: :request do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe 'POST /lendings' do
+    subject { post '/lendings', params: params }
+
+    let(:params) { {} }
+
+    context do
+      it do
+        subject
+      end
+    end
+  end
 end
