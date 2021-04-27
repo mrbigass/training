@@ -26,6 +26,11 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Max: 10
 
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+
 Style/AsciiComments:
   Enabled: false
 

@@ -7,7 +7,7 @@ RSpec.describe LendingsController, type: :request do
   let(:user) { build(:user, office: office) }
   let(:machine) { create(:machine) }
 
-  describe 'GET /lending/new' do
+  xdescribe 'GET /lending/new' do
     subject { get '/lendings/new' }
 
     it do
@@ -16,7 +16,7 @@ RSpec.describe LendingsController, type: :request do
     end
   end
 
-  describe 'POST /lendings' do
+  xdescribe 'POST /lendings' do
     subject { post '/lendings', params: params }
 
     let(:params) { {} }

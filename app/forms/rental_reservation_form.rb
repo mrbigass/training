@@ -6,8 +6,8 @@ class RentalReservationForm
   include ActiveModel::Validations
 
   attribute :office, klass: :office
-  attribute :customer_id
-  attribute :machine_id
+  attribute :customer_id, :integer
+  attribute :machine_id, :integer
   attribute :from, :datetime, default: -> { Time.now }
   attribute :to, :datetime, default: -> { Time.now + 2.weeks }
 
@@ -18,10 +18,13 @@ class RentalReservationForm
   def save
     return false unless valid?
 
+    customer = Customer.find_by(id: customer_id)
+    machine = Machine.find_by(id: machine_id)
+
     lending = Lending.new(
       office: office,
-      customer_id: customer_id,
-      machine_id: machine_id,
+      customer: customer,
+      machine: machine,
       from: from,
       to: to
     )
