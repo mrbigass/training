@@ -1,4 +1,4 @@
-FROM ruby:2.7.2-alpine3.13
+FROM ruby:3.0.0-alpine3.13
 
 RUN apk update && \
     apk add --no-cache yarn tzdata libxml2-dev curl-dev make gcc libc-dev g++ libxslt-dev build-base mariadb-dev
