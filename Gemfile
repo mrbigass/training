@@ -14,6 +14,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'ridgepole'
 gem 'slim-rails'
 gem 'html2slim'
+gem 'graphql'
 
 group :development, :test do
   gem 'pry-byebug'
