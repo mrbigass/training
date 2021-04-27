@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe LendingsController, type: :request do
+  # let(:rspec_session) { { user_id: user.id } }
+
   let(:office) { create(:office) }
-  let(:user) { create(:user, office: office) }
+  let(:user) { build(:user, office: office) }
   let(:machine) { create(:machine) }
 
   describe 'GET /lending/new' do
