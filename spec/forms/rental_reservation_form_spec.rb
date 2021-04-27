@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RentalReservationForm do
+RSpec.describe RentalReservationForm, type: :model do
   describe '#Validations' do
     it { is_expected.to validate_presence_of(:office) }
     it { is_expected.to validate_presence_of(:machine_id) }
