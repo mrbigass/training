@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :offices,   only: %i[new create]
   resources :customers, only: %i[new create]
   resources :lendings,  only: %i[new create]
+  post '/graphql', to: 'graphql#execute'
 end
