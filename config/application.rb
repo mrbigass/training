@@ -18,7 +18,7 @@ Bundler.require(*Rails.groups)
 module Training
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
+    config.load_defaults 6.1
 
     config.i18n.fallbacks = [I18n.default_locale]
     I18n.locale = :ja
