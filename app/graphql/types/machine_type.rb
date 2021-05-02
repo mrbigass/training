@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Types
-  class OfficeType < Types::BaseObject
+  class MachineType < Types::BaseObject
     field :id, ID, null: false
+    field :office, Types::OfficeType, null: false
     field :name, String, null: false
-    field :machines, [Type::MachineType], null: false
   end
 end
