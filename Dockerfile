@@ -1,11 +1,11 @@
 FROM ruby:3.0.0-alpine3.13
 
 RUN apk update && \
-    apk add --no-cache yarn tzdata libxml2-dev curl-dev make gcc libc-dev g++ libxslt-dev build-base mariadb-dev
+    apk add --no-cache tzdata libxml2-dev curl-dev make gcc libc-dev g++ libxslt-dev build-base mariadb-dev
 
 WORKDIR /app
 COPY . /app/.
-RUN bundle install && yarn
+RUN bundle install
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
