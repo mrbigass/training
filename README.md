@@ -1,9 +1,9 @@
 # Training
-Rails 練習台
 
 ## How to setup
 ```
 $ bin/setup
 $ bin/rails s
-$ bin/webpack
 ```
+
+also This app build on graphql, you need to setup [client app](https://github.com/mrbigass/training_front) too.
