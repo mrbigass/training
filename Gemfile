@@ -13,7 +13,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # added
 gem 'ridgepole'
 gem 'slim-rails'
-gem 'html2slim'
+gem 'graphql'
 
 group :development, :test do
   gem 'pry-byebug'
@@ -27,7 +27,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.4'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
