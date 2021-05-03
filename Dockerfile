@@ -13,9 +13,8 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
-# Start the main process.
 # -b はIPをバインドするためのオプション
-# CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["rails", "server", "-b", "0.0.0.0"]
 
 # docker buildするためのメモ書き
 # sudo docker build ./ -t rails
