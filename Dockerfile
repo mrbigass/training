@@ -14,6 +14,7 @@ RUN bundle install
 EXPOSE 3000
 
 # -b はIPをバインドするためのオプション
+# ポートフォワーディング
 CMD ["rails", "server", "-b", "0.0.0.0"]
 
 # docker buildするためのメモ書き
