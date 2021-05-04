@@ -15,7 +15,7 @@ RUN apk update && \
 
 WORKDIR /app
 COPY . /app/.
-RUN cp /app/.env.production /app/.env
+RUN cp /app/.env.production /app/.env & source .env
 RUN bundle install
 
 # Add a script to be executed every time the container starts.
