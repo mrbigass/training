@@ -1,0 +1,14 @@
+/.circleci/
+/.github/
+/.git/
+/log/
+/spec/
+/tmp/
+.dockerignore
+.gitignore
+.rspec
+.rubocop.yml
+.ruby-version
+docker-compose.yml
+Dockerfile
+README.md
