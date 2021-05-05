@@ -21,6 +21,7 @@ module Training
     config.load_defaults 6.1
 
     config.i18n.fallbacks = [I18n.default_locale]
+    I18n.config.available_locales = %i[ja en]
     I18n.locale = :ja
 
     # Settings in config/environments/* take precedence over those specified here.
