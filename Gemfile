@@ -14,6 +14,7 @@ gem 'bootsnap', require: false
 gem 'ridgepole'
 gem 'slim-rails'
 gem 'graphql'
+gem 'rack-cors'
 
 group :development, :test do
   gem 'pry-byebug'
