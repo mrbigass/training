@@ -83,6 +83,11 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     graphql (1.12.8)
+    graphql-rails_logger (1.2.3)
+      actionpack (> 5.0)
+      activesupport (> 5.0)
+      railties (> 5.0)
+      rouge (~> 3.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     listen (3.5.1)
@@ -157,6 +162,7 @@ GEM
     ridgepole (0.9.3)
       activerecord (>= 5.1, < 6.2)
       diffy
+    rouge (3.26.0)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.1)
@@ -235,6 +241,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   graphql
+  graphql-rails_logger
   listen (~> 3.4)
   mysql2
   pry-byebug
