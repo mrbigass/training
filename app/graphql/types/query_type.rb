@@ -18,7 +18,7 @@ module Types
 
     field :users, [Types::UserType], null: false
     def users
-      User.all
+      current_user.office.users
     end
 
     field :user, Types::UserType, null: false do

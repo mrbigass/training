@@ -51,6 +51,6 @@ class GraphqlController < ApplicationController
   end
 
   def authenticated_user
-    User.first
+    User.find_by(id: request.session[:user_id]) || User.first
   end
 end
