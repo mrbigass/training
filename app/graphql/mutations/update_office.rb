@@ -4,7 +4,7 @@ module Mutations
   class UpdateOffice < GraphQL::Schema::RelayClassicMutation
     graphql_name 'UpdateOffice'
 
-    field :post, Types::OfficeType, null: false
+    field :office, Types::OfficeType, null: false
     field :result, Boolean, null: false
 
     argument :id, ID, required: true
